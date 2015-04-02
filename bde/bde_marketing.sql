@@ -1,0 +1,24 @@
+CREATE TABLE f_bde_marketing (
+dept VARCHAR(50),
+magasin VARCHAR(50),
+rayonnage VARCHAR(50),
+bestseller VARCHAR(50),
+recent VARCHAR(50)
+)
+ORGANIZATION EXTERNAL
+(TYPE ORACLE_LOADER
+DEFAULT DIRECTORY sources
+ACCESS PARAMETERS
+(
+RECORDS DELIMITED BY newline
+SKIP 1
+CHARACTERSET UTF8
+BADFILE nf26p011_logs:'import.bad'
+LOGFILE nf26p011_logs:'import.log'
+FIELDS TERMINATED BY ';'
+OPTIONALLY ENCLOSED BY '"'
+)
+LOCATION ('marketing.csv'))
+REJECT LIMIT UNLIMITED;
+
+SELECT count(*) from f_bde_marketing;
