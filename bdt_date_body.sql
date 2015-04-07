@@ -17,12 +17,12 @@ CREATE OR REPLACE TYPE BODY date_typ IS
   MEMBER FUNCTION getJds RETURN varchar2
   IS
   BEGIN
-    RETURN TO_CHAR(self.getDat(),'day');
+    RETURN TO_CHAR(self.getDat(),'fmday');
   END;
   MEMBER FUNCTION getSem RETURN number
   IS
   BEGIN
-    RETURN TO_CHAR(self.getDat(),'ww');
+    RETURN TO_CHAR(self.getDat(),'fmweek');
   END;
   MEMBER FUNCTION getMon RETURN number
   IS
@@ -32,6 +32,6 @@ CREATE OR REPLACE TYPE BODY date_typ IS
   MEMBER FUNCTION getTri RETURN number
   IS
   BEGIN
-    RETURN CEIL(TO_CHAR(self.getDat(),'mm') / 3);
+    RETURN TO_CHAR(self.getDat(),'q');
   END;
 END;

@@ -19,7 +19,7 @@ CREATE OR REPLACE TYPE magasin_typ AS OBJECT (
   MEMBER FUNCTION getBestseller RETURN varchar2
 );
 
-@bdt_magasin_body.sql
+@bdt_magasin_body.sql;
 
 CREATE TABLE f_bdt_magasin OF magasin_typ;
 

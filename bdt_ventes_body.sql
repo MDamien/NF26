@@ -26,10 +26,10 @@ END;
 MEMBER FUNCTION getTicket RETURN NUMBER
 IS
 BEGIN
-     if regexp_like(ticket, '[0-9]+') then
-      return to_number(ticket);
-    else
-      return null;
-    end if;
+   if regexp_like(ticket, '[0-9]+') then
+    return to_number(ticket);
+  else
+    return null;
+  end if;
 END;
 END;

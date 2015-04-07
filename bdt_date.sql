@@ -1,5 +1,3 @@
-DROP TABLE f_dt_date if exists;
-
 CREATE OR REPLACE TYPE date_typ AS OBJECT (
   ddate char(10),
   MEMBER FUNCTION getDat RETURN date,
@@ -9,7 +7,7 @@ CREATE OR REPLACE TYPE date_typ AS OBJECT (
   MEMBER FUNCTION getTri RETURN number
 );
 
-@bdt_date_body.sql
+@bdt_date_body.sql;
 
 CREATE TABLE f_bdt_date OF date_typ;
 

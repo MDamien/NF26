@@ -1,4 +1,3 @@
-DROP TABLE f_bdt_ventes;
 
 CREATE OR REPLACE TYPE vente_typ AS OBJECT (
   ticket VARCHAR2(13),
@@ -12,7 +11,7 @@ CREATE OR REPLACE TYPE vente_typ AS OBJECT (
   MEMBER FUNCTION getIsbn RETURN VARCHAR2
 );
 
-@bdt_vente_body.sql
+@bdt_ventes_body.sql;
 
 CREATE TABLE f_bdt_ventes OF vente_typ;
 
@@ -20,9 +19,6 @@ INSERT INTO f_bdt_ventes
 (SELECT *
 FROM f_bde_ventes
 );
-
-SELECT distinct getPubli from f_bdt_ventes;
-
 
 ALTER TABLE f_bdt_ventes
 ADD CONSTRAINT f_bdt_ventes_fkdate

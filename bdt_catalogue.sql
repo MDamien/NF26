@@ -23,7 +23,7 @@ CREATE OR REPLACE TYPE livre_typ AS OBJECT(
 );
 /
 
-@bdt_catalogue_body.sql
+@bdt_catalogue_body.sql;
 
 CREATE TABLE f_bdt_catalogue OF livre_typ (PRIMARY KEY(isbn));
 
