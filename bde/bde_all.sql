@@ -1,7 +1,7 @@
 
-@createdir.sql
+@bde/rcreatedir.sql
 
-@bde_catalogue.sql
-@bde_dept.sql
-@bde_ventes.sql
-@bde_marketing.sql
+@bde/bde_catalogue.sql
+@bde/bde_dept.sql
+@bde/bde_ventes.sql
+@bde/bde_marketing.sql

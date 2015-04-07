@@ -1,11 +1,12 @@
-DROP TABLE f_bdt_magasin;
+-- DROP TABLE f_bdt_magasin;
+-- DROP TYPE magasin_typ;
 
 CREATE OR REPLACE TYPE magasin_typ AS OBJECT (
   dpt number(2),
   dpt_nom varchar2(50),
   dpt_pop number(10),
   rayonnage char(1),
-  bestseller varchar2(10),
+  bestseller number(1),
   recent number(1),
   mag varchar2(4),
   
@@ -13,10 +14,12 @@ CREATE OR REPLACE TYPE magasin_typ AS OBJECT (
   MEMBER FUNCTION getDptnom RETURN varchar2,
   MEMBER FUNCTION getDptpopulation RETURN number,
   MEMBER FUNCTION getRayonnage RETURN varchar2,
-  MEMBER FUNCTION getRaynom RETURN varchar2,
   MEMBER FUNCTION getMagasin RETURN varchar2,
-  MEMBER FUNCTION getRayonBs RETURN number
+  MEMBER FUNCTION getRecent RETURN number,
+  MEMBER FUNCTION getBestseller RETURN varchar2
 );
+
+@bdt_magasin_body.sql
 
 CREATE TABLE f_bdt_magasin OF magasin_typ;
 

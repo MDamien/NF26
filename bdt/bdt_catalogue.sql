@@ -1,7 +1,8 @@
 -- ne pas prendre genre en sortie
 -- method getAge()
 		
-DROP TABLE f_bdt_catalogue;
+-- DROP TABLE f_bdt_catalogue;
+-- DROP TYPE livre_typ;
 
 CREATE OR REPLACE TYPE livre_typ AS OBJECT(
   isbn         VARCHAR(40),
@@ -22,7 +23,7 @@ CREATE OR REPLACE TYPE livre_typ AS OBJECT(
 );
 /
 
-@livre_body.sql
+@bdt_catalogue_body.sql
 
 CREATE TABLE f_bdt_catalogue OF livre_typ (PRIMARY KEY(isbn));
 
@@ -30,5 +31,4 @@ INSERT INTO f_bdt_catalogue (isbn, titre, auteur, langue, publication, editeur, 
   SELECT isbn, titre, auteur, langue, publication, editeur, genre
   FROM nf26.catalogue;
   
-SELECT SUM(isbn) FROM f_bde_catalogue;
-SELECT SUM(isbn) FROM f_bdt_catalogue;
+SELECT count(distinct t.getPublication()) FROM f_bdt_catalogue t;
