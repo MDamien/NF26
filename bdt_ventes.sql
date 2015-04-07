@@ -10,16 +10,18 @@ CREATE OR REPLACE TYPE vente_typ AS OBJECT (
   MEMBER FUNCTION getDate RETURN DATE,
   MEMBER FUNCTION getIsbn RETURN VARCHAR2
 );
+/
 
-@bdt_ventes_body.sql;
+@bdt_ventes_body.sql
 
 CREATE TABLE f_bdt_ventes OF vente_typ;
 
 INSERT INTO f_bdt_ventes
-(SELECT *
+(SELECT ticket, tdate, mag, isbn
 FROM f_bde_ventes
 );
 
+/*
 ALTER TABLE f_bdt_ventes
 ADD CONSTRAINT f_bdt_ventes_fkdate
 FOREIGN KEY (ddate) REFERENCES f_bdt_date(ddate);
@@ -27,3 +29,4 @@ FOREIGN KEY (ddate) REFERENCES f_bdt_date(ddate);
 ALTER TABLE f_bdt_ventes
 ADD CONSTRAINT f_bdt_ventes_fkmagasin
 FOREIGN KEY (magasin) REFERENCES f_bdt_magasin(mag);
+*/

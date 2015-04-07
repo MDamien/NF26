@@ -1,5 +1,7 @@
 -- REGEXP_REPLACE(ddate, '(([0-9]*-[0-9]*-)([0-9]))', '\20\3') "ndate";
 
+-- annee
+
 CREATE OR REPLACE TYPE BODY date_typ IS
   MEMBER FUNCTION getDat RETURN date
   IS
@@ -22,7 +24,7 @@ CREATE OR REPLACE TYPE BODY date_typ IS
   MEMBER FUNCTION getSem RETURN number
   IS
   BEGIN
-    RETURN TO_CHAR(self.getDat(),'fmweek');
+    RETURN TO_CHAR(self.getDat(),'ww');
   END;
   MEMBER FUNCTION getMon RETURN number
   IS

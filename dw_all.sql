@@ -25,13 +25,13 @@ CREATE UNIQUE INDEX f_dw_magasin_idx ON f_dw_magasin(mag);
 ALTER TABLE f_dw_magasin
 ADD CONSTRAINT f_dw_magasin_pk PRIMARY KEY (mag);
 
-
+-- DROP TABLE f_dw_date;
 CREATE TABLE f_dw_date (
 dat date,
 jds varchar2(10),
-sem number(2),
-mon number(2),
-tri number(1)
+sem number(10),
+mon number(10),
+tri number(10)
 );
 CREATE UNIQUE INDEX f_dw_date_idx ON f_dw_date(dat);
 ALTER TABLE f_dw_date
@@ -44,7 +44,7 @@ dat date,
 pro char(13)
 );
 
-
+/*
 ALTER TABLE f_dw_ventes
 ADD CONSTRAINT f_dw_ventes_fkpro
 FOREIGN KEY (pro) REFERENCES f_dw_produit(isbn);
@@ -54,9 +54,9 @@ FOREIGN KEY (dat) REFERENCES f_dw_date(dat);
 ALTER TABLE f_dw_ventes
 ADD CONSTRAINT f_dw_ventes_fkmag
 FOREIGN KEY (mag) REFERENCES f_dw_magasin(mag);
+*/
 
-
-
+/*
 -- Désactivation des contraintes et index
 ALTER TABLE f_dw_ventes DISABLE CONSTRAINT f_dw_ventes_fkpro;
 ALTER TABLE f_dw_ventes DISABLE CONSTRAINT f_dw_ventes_fkdat;
@@ -67,7 +67,7 @@ ALTER TABLE f_dw_produit DISABLE CONSTRAINT f_dw_produit_pk;
 DROP INDEX f_dw_date_idx;
 DROP INDEX f_dw_magasin_idx;
 DROP INDEX f_dw_produit_idx;
-
+*/
 -- Insertion
 INSERT INTO f_dw_produit(isbn,titre,auteur,langue,publication,editeur)
 SELECT t.getIsbn(),t.getTitre(),t.getAuteur(),t.getLangue(),t.getPublication(),t.getEditeur()
@@ -83,6 +83,10 @@ SELECT t.getMagasin(),t.getDate(),t.getIsbn()
 FROM f_bdt_ventes t;
 
 
+SELECT t.getDat(), t.getJds(), t.getSem(), t.getMon(), t.getTri()
+FROM f_bdt_date t;
+
+/*
 -- Réactivation des index et contraintes
 CREATE INDEX f_dw_date_idx ON f_dw_date(dat);
 CREATE INDEX f_dw_magasin_idx ON f_dw_magasin(mag);
@@ -93,10 +97,11 @@ ALTER TABLE f_dw_produit ENABLE CONSTRAINT f_dw_produit_pk;
 ALTER TABLE f_dw_ventes ENABLE CONSTRAINT f_dw_ventes_fkpro;
 ALTER TABLE f_dw_ventes ENABLE CONSTRAINT f_dw_ventes_fkdat;
 ALTER TABLE f_dw_ventes ENABLE CONSTRAINT f_dw_ventes_fkmag;
+*/
 
-
+/*
 SELECT count(*) exceptions FROM exceptions;
-
+*/
 
 -- Vérification sommaire du transfert
 SELECT * FROM f_dw_ventes WHERE ROWNUM=1;

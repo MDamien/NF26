@@ -16,8 +16,9 @@ CREATE OR REPLACE TYPE magasin_typ AS OBJECT (
   MEMBER FUNCTION getRayonnage RETURN varchar2,
   MEMBER FUNCTION getMagasin RETURN varchar2,
   MEMBER FUNCTION getRecent RETURN number,
-  MEMBER FUNCTION getBestseller RETURN varchar2
+  MEMBER FUNCTION getBestseller RETURN number
 );
+/
 
 @bdt_magasin_body.sql;
 

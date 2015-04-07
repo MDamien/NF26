@@ -6,8 +6,9 @@ CREATE OR REPLACE TYPE date_typ AS OBJECT (
   MEMBER FUNCTION getMon RETURN number,
   MEMBER FUNCTION getTri RETURN number
 );
+/
 
-@bdt_date_body.sql;
+@bdt_date_body.sql
 
 CREATE TABLE f_bdt_date OF date_typ;
 
